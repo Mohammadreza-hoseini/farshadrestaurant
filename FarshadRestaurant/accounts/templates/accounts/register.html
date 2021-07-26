@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="login-wrapper aos-init" data-aos="zoom-in" data-aos-duration="1200" style="height:100%; padding-top: 80px;">
+
+        <form action="" method="post" class="form mt-8" style="margin-bottom:40px; margin-top:50px;">
+            {% csrf_token %}
+            <img src="{% static 'accounts/assets/brand/logo.jpeg'%}">
+            <h2>فرم عضویت</h2>
+            <br>
+<!--     DIV FOR RULES       -->
+        <div class="p-5 border rounded-3 border-4 border-secondary">
+            {% for titelrule in titelrules %}
+            <h4 style="line-height:60px;">{{titelrule.titel}}</h4>
+            {% endfor %}
+            {% for stm in statements %}
+            <ul>
+                <li>{{ stm.statement }}</li>
+            </ul>
+            {% endfor %}
+            <label>قوانین را پذیرفته ام</label>
+        <input id="checkme" type="checkbox">
+        </div>
+<br><br><br>
+            <div class="input-group">
+                <input type="text" name="username" id="id_username" max_length="150" required autocomplete="off">
+
+                <label for="id_username">نام کاربری</label>
+                <span class="helptext">نام کاربری در زمان ورود به سایت از شما سوال میشود.نام کاربری نمیتواند تکراری باشد.</span>
+            </div><br><br>
+            <div class="input-group">
+                <input type="text" name="first_name" id="id_first_name" max_length="30" required autocomplete="off">
+                <label for="id_first_name">نام</label>
+            </div><br><br>
+            <div class="input-group">
+                <input type="text" name="last_name" id="id_last_name" max_length="30" required autocomplete="off">
+                <label for="id_last_name">نام خانوادگی</label>
+            </div><br><br>
+            <div class="input-group">
+                <input type="text" name="address" id="id_address" max_length="400" required autocomplete="off">
+
+                <label for="id_address">آدرس</label>
+                <span class="helptext">لطفا آدرس خود را دقیق وارد کنید.سفارش شما به این آدرس ارسال میشود.</span>
+            </div><br><br>
+            <div class="input-group">
+                <input type="text" name="phoneNumber" id="id_phoneNumber" required autocomplete="off">
+
+                <label for="id_phoneNumber">موبایل</label>
+                <span class="helptext">مثال:۰۹۱۲۳۴۴۶۷۸۹</span>
+            </div><br><br>
+            <div class="input-group">
+                <input type="text" name="phone" id="id_phone" required autocomplete="off">
+
+                <label for="id_phone">تلفن ثابت</label>
+
+            </div><br><br>
+            <div class="input-group">
+                <input type="password" name="password1" id="id_password1" required autocomplete="new-password">
+                <label for="id_password1">رمز عبور</label>
+                <ul><li>رمز عبور خود را در اختیار دیگران قرار ندهید</li><br><li>رمز عبور شما باید حداقل ۸ کاراکتر باشد</li><br><li>رمز عبور باید ترکیبی از حروف بزرگ,کوچک و اعداد باشد</li><br><li>رمز عبور شما نمیتواند تنها عدد باشد</li></ul>
+            </div><br><br>
+            <div class="input-group">
+                <input type="password" name="password2" id="id_password2" required autocomplete="new-password">
+                <label for="id_password2">تکرار رمز عبور</label>
+            </div>
+
+            <button id="register" class="btn btn-outline-secondary btn-lg submit-btn btn-jittery" type="submit" disabled="disabled">عضویت</button>
+        </form>
+
+    </div>
+
+
+
+
+{% endblock %}

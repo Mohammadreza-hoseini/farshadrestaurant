@@ -1,0 +1,57 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'shop:home' %}">صفحه اصلی</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="{% url 'shop:menu' %}">منو و سفارش غذا</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart:detail' %}">سبد خرید</a>
+          </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">خروج</a>
+            </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">ورود</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">عضویت</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:register' %}">عضویت</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop:aboutus' %}">درباره ما</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop:contactus' %}">تماس با ما</a>
+          </li>
+          <li class="nav-item timer">
+            <a id="timer"></a>
+          </li>
+
+        </ul>
+
+
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="بحث" aria-label="بحث">
+          <button class="btn btn-outline-success" type="submit">بحث</button>
+        </form> -->
+        <!-- brand->logo -->
+        <a class="navbar-brand" href="{% url 'shop:home' %}">
+          <img class="rounded-circle" width="70px" src="{% static 'accounts/assets/brand/logo.jpeg'%}" alt="logo">
+        </a>
+
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container checkout">
+       <div class="row">
+
+<div class="finish-text"><div><h1>پرداخت مبلغ</h1>
+    <br/></div>
+    <h2 class="text-danger">ابتدا مشخصات خود را به دقت چک کنید و بعد روی دکمه پرداخت کلیک کنید</h2>
+
+           <div><p>مبلغ نهایی جهت پرداخت: {{ order.get_total_price }}</p></div></div><br>
+           <div>
+
+
+    <form action="{% url 'orders:coupon_apply' order.id %}" method="post">
+        {% csrf_token %}
+        <label for="id_code">کد تخفیف:</label>
+        <input type="text" name="code" required id="id_code">
+        <input class="btn-jittery" type="submit" value="اعمال کد تخفیف">
+    </form>
+
+    <br/>
+
+           </div>
+
+
+           <div class="card border-danger mt-4 mb-4" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">مشخصات شما:</h5>
+                      {% for client in clients %}
+                        <p class="card-text">نام کاربری:{{ user.username }}</p>
+                        <p class="card-text">نام:{{ client.first_name }}</p>
+                        <p class="card-text">آدرس ارسالی:{{ client.address }}</p>
+                         <p class="card-text">شماره موبایل:{{ client.phoneNumber }}</p>
+                      {% endfor %}
+
+                    <a href="{% url 'accounts:editpage' %}" class="btn btn-danger card-link">برای ویرایش آدرس یا شماره تلفن کلیک کنید</a>
+                  </div>
+            </div>
+
+            <a href="{% url 'orders:payment' order.id order.get_total_price %}" class="btn btn-warning btn-jittery mt-8">وصل شدن به درگاه پرداخت</a>
+
+
+
+
+       </div>
+   </div>
+
+
+{% endblock %}

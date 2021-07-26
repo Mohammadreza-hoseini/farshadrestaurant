@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card details" style="width: 18rem;">
+  <img src="{{ product.image.url }}" class="bd-placeholder-img card-img-top" width="100%" height="350" alt="food">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+      <p class="card-text"> {{ product.price }}تومان </p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+      {% csrf_token %}
+      <tr><th><label for="id_quantity">تعداد:</label></th><td><input type="number" name="quantity" min="1" max="9" required id="id_quantity"></td></tr>
+      <br><br>
+
+      <input type="submit" class="input-detail btn btn-jittery" value="اضافه کردن به سبد خرید">
+    </form>
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}

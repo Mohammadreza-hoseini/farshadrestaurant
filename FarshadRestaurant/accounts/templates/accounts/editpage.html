@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="editdata" action="" method="post">
+    {% csrf_token %}
+    <h1 class="text-danger">ویرایش اطلاعات:</h1>
+    آدرس جدید <input class="border-danger" type="text" name="newadd" required>
+    شماره موبایل جدید <input class="border-danger" type="text" name="newphone" required>
+    <input type="submit" class="border-danger btn btn-danger" value="ویرایش">
+</form>
+
+{% endblock %}

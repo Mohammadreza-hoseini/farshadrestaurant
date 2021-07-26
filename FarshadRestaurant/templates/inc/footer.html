@@ -1,0 +1,42 @@
+{% load static %}
+<footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 myCols">
+                    <h5>دسترسی سریع</h5>
+                    <ul>
+                        <li><a href="{% url 'shop:home' %}">صفحه نخست</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'accounts:logout' %}">خروج </a></li>
+                        {% else %}
+                            <li><a href="{% url 'accounts:login' %}">ورود </a></li>
+                            <li><a href="{% url 'accounts:register' %}">عضویت </a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-sm-4 myCols">
+                    <h5>رستوران فرشاد</h5>
+                    <ul>
+                        <li><a href="{% url 'shop:menu' %}">منو و سفارش غذا</a></li>
+                        <li><a href="{% url 'shop:aboutus' %}">درباره ما</a></li>
+                        <li><a href="{% url 'shop:contactus' %}">تماس با ما</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 myCols">
+                    <img class="rounded-circle" width="110px" src="{% static 'accounts/assets/brand/logo.jpeg'%}" alt="logo">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2021 کلیه حقوق مادی و معنوی این سایت متعلق به <a href="#" target="_blank"><strong>رستوران فرشاد</strong></a> می باشد.</p>
+            <hr class="hr-footer">
+            <strong>*توسعه دهنده -> محمدرضا حسینی*</strong>
+<br>
+            <strong>*ارتباط با توسعه دهنده -> 09051441132*</strong>
+
+        </div>
+
+    </footer>
+

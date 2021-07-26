@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="login-wrapper aos-init" data-aos="zoom-in" data-aos-duration="1200">
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            <img src="{% static 'accounts/assets/brand/logo.jpeg'%}">
+            <h2>ورود به حساب کاربری</h2>
+            <div class="input-group">
+                <input type="text" name="username" id="id_username" max_length="200" required autocomplete="off">
+                <label for="id_username">نام کاربری</label>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" id="id_password" required autocomplete="off">
+                <label for="id_password">رمز عبور</label>
+            </div>
+            <button class="btn btn-outline-secondary btn-lg submit-btn btn-jittery" type="submit">ورود</button>
+            <br>
+            <br>
+            <a class="btn btn-outline-secondary btn-lg submit-btn btn-jittery" href="{% url 'accounts:register' %}">عضویت</a>
+        </form>
+    </div>
+{% endblock %}
